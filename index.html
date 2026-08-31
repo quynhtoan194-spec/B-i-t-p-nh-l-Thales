@@ -125,6 +125,32 @@
       margin: 8px 0;
     }
 
+    /* Phân số tự dựng bằng CSS Flexbox */
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    .fraction .numerator {
+      border-bottom: 2px solid #1f2937;
+      padding-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .fraction .denominator {
+      padding-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
     /* Ô trống điền đáp án */
     .drop-zone {
       display: inline-flex;
@@ -241,15 +267,34 @@
     <div class="step-text">• Bước 1: Chuyển các phép chia thành phép nhân với phân số nghịch đảo</div>
     <div class="step-box">
       <div class="math-row">
-        <span class="math">\displaystyle Q = \frac{x^2 - 4y^2}{</span>
-        <div class="drop-zone" data-ans="3xy(x - y)">?</div>
-        <span class="math">\displaystyle } \cdot \frac{x - y}{</span>
-        <div class="drop-zone" data-ans="-(x - 2y)">?</div>
-        <span class="math">\displaystyle } \cdot \frac{(x - y)^2}{</span>
-        <div class="drop-zone" data-ans="2(x + 2y)">?</div>
-        <span class="math">\displaystyle } \cdot \frac{216xy}{</span>
-        <div class="drop-zone" data-ans="(x - y)^2">?</div>
-        <span class="math">\displaystyle }</span>
+        <span class="math">Q =</span>
+        
+        <!-- Phân số 1 -->
+        <div class="fraction">
+          <div class="numerator"><span class="math">x^2 - 4y^2</span></div>
+          <div class="denominator"><div class="drop-zone" data-ans="3xy(x - y)">?</div></div>
+        </div>
+        <span class="math">\cdot</span>
+
+        <!-- Phân số 2 -->
+        <div class="fraction">
+          <div class="numerator"><span class="math">x - y</span></div>
+          <div class="denominator"><div class="drop-zone" data-ans="-(x - 2y)">?</div></div>
+        </div>
+        <span class="math">\cdot</span>
+
+        <!-- Phân số 3 -->
+        <div class="fraction">
+          <div class="numerator"><span class="math">(x - y)^2</span></div>
+          <div class="denominator"><div class="drop-zone" data-ans="2(x + 2y)">?</div></div>
+        </div>
+        <span class="math">\cdot</span>
+
+        <!-- Phân số 4 -->
+        <div class="fraction">
+          <div class="numerator"><span class="math">216xy</span></div>
+          <div class="denominator"><div class="drop-zone" data-ans="(x - y)^2">?</div></div>
+        </div>
       </div>
     </div>
 
@@ -323,7 +368,7 @@
 </div>
 
 <script>
-  // Cấu hình Supabase API (Giữ nguyên từ bài trước)
+  // Cấu hình Supabase API
   const SUPABASE_URL = "https://hyllhascudmrpfelnukc.supabase.co";
   const SUPABASE_KEY = "sb_publishable_oOicirSiyYu1f2oCYyYrzA_qcPCL7nX";
   const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
